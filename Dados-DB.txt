@@ -1,0 +1,4 @@
+hostname: db-pi.crnouq4zmylf.sa-east-1.rds.amazonaws.com
+user: uiqmasterdb
+senha: d9ifCaxIfQP9FX0GkfoE
+porta: 3306
