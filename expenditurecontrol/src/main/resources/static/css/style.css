@@ -117,6 +117,56 @@ body {
   transition: 1.5s;
 }
 
+.h-custom {
+  height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
+
+#btnSignIn {
+  background-color: #fff;
+  color: #333;
+  transition: 1.5s;
+}
+
+#btnSignIn:hover {
+  background-color: #333;
+  color: #fff;
+  transition: 1.5s;
+}
+
+#btnSignUp {
+  font-size: 14px;
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+  transition: 0.7s;
+}
+
+#btnSignUp:hover {
+  font-size: 18px;
+  color: rgb(80, 133, 247);
+  transition: 0.7s;
+}
+
+#btnEsqueceuSenha {
+  font-size: 16px;
+  text-align: start;
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+  transition: 0.7s;
+}
+
+#btnEsqueceuSenha:hover {
+  font-size: 18px;
+  color: rgb(80, 133, 247);
+  transition: 0.7s;
+}
+
 .divider:after,
 .divider:before {
   content: "";
@@ -133,15 +183,35 @@ body {
   }
 }
 
-#btnSignup {
-  font-size: 14px;
-  background-color: transparent;
-  border-color: transparent;
-  color: white;
-  transition: 0.7s;
+#btnCadNewUser {
+  background-color: #fff;
+  color: #333;
+  transition: 1.5s;
 }
 
-#btnSignup:hover {
-  font-size: 18px;
-  transition: 0.7s
+#btnCadNewUser:hover {
+  background-color: #333;
+  color: #fff;
+  transition: 1.5s;
+}
+
+#edtLogin, 
+#edtSenha {
+  border-color: rgba(255, 255, 255, 0.52);
+}
+
+#edtLogin:invalid, 
+#edtSenha:invalid {
+  border-color: rgba(255, 0, 0, 0.52);
+  -webkit-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
+}
+
+#edtLogin:valid:focus, 
+#edtSenha:valid:focus {
+  border-color: rgba(34, 255, 0, 0.52);
+  -webkit-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
 }

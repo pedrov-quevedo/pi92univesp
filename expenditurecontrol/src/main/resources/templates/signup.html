@@ -1,14 +1,129 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Seu Controle - Sign Up</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
-</head>
-<body>
-    
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Seu Controle! - Sign Up</title>
+    <!-- <link rel="icon" href="https://getbootstrap.com.br/favicon.ico" /> -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      href="../static/css/style.css"
+      th:href="@{/css/style.css}"
+      rel="stylesheet"
+    />
+    <link
+      href="../static/js/script.js"
+      th:href="@{/js/script.css}"
+      type="text/javascript"
+    />
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script th:src="@{.//..//script.js}"></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"
+      integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section class="vh-100" style="width: 100%">
+      <div style="text-align: center; padding-top: 1.5rem">
+        <h3>Nova Conta</h3>
+      </div>
+      <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-9 col-lg-6 col-xl-5">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+              class="img-fluid"
+              alt="Sample image"
+            />
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <form th:action="@{/signup}" method="POST">
+              <!-- EMAIL/USUARIO -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="login">Usuário/Email</label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  placeholder="Digite um usuário ou email"
+                  name="login"
+                  id="edtLogin"
+                  minlength="5"
+                  maxlength="15"
+                />
+
+                <div th:if="${errorMessage1}">
+                  <div
+                    class="alert alert-danger"
+                    role="alert"
+                    th:text="${errorMessage1}"
+                    style="margin-top: 0.2rem"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- SENHA -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="senha">Senha</label>
+                <input
+                  type="password"
+                  name="senha"
+                  id="edtSenha"
+                  class="form-control form-control-lg"
+                  placeholder="Digite uma senha"
+                  minlength="8"
+                  maxlength="20"
+                />
+
+                <div th:if="${errorMessage2}">
+                  <div
+                    class="alert alert-danger"
+                    role="alert"
+                    th:text="${errorMessage2}"
+                    style="margin-top: 0.2rem"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <button
+                  class="btn btn-primary btn-lg"
+                  style="
+                    padding-left: 2.5rem;
+                    padding-right: 2.5rem;
+                    border-color: #fff;
+                  "
+                  id="btnCadNewUser"
+                  type="submit"
+                >
+                  Criar conta
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
