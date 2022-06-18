@@ -19,11 +19,7 @@
     />
 
     <!-- scripts e css da página -->
-    <link
-      href="../static/css/style.css"
-      th:href="@{/css/style.css}"
-      rel="stylesheet"
-    />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
     <!-- <script th:src="@{.//..//script.js}"></script> -->
 
     <script src="main.js"></script>
@@ -33,14 +29,14 @@
       <div style="text-align: center; padding-top: 3rem; padding-bottom: 3rem">
         <h3>Login</h3>
       </div>
-      <form method="post" th:action="@{/signin}">
+      <form th:action="@{/signin}" method="post">
         <!-- EMAIL/USUARIO -->
         <div class="form-outline mb-4">
           <label class="form-label" for="login">Usuário</label>
           <input
             type="text"
-            name="login"
-            id="edtLogin"
+            name="username"
+            id="login"
             class="form-control form-control-lg"
             placeholder="Digite seu nome de usuário/email"
           />
@@ -51,8 +47,8 @@
           <label class="form-label" for="senha">Senha</label>
           <input
             type="password"
-            name="senha"
-            id="edtSenha"
+            name="password"
+            id="senha"
             class="form-control form-control-lg"
             placeholder="Digite sua senha"
           />

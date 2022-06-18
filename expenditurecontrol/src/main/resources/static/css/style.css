@@ -215,3 +215,73 @@ body {
   -ms-transition: background-color 1000ms linear;
   transition: background-color 1000ms linear;
 }
+
+#sideMenuBar {
+  width: 200px;
+  border-radius: 10px;
+  border: 1px solid;
+  border-bottom: transparent;
+  border-top: transparent;
+  border-left: transparent;
+  border-color: #222;
+  background-color: #222;
+  /* display: flex;
+  align-items: flex-start; */
+  justify-content: center;
+  margin-top: 8px;
+  margin: 8px;
+  box-shadow: 1px 1px 1px 1px rgb(51, 51, 51);
+  transition: 0.7s;
+}
+
+#sideMenuBar:hover{
+  box-shadow: 1px 1px 1px 1px rgb(60, 60, 60);
+  transition: 0.7s;
+}
+
+#sideMenuBar label {
+  color: #fff;
+  font-size: 24px;
+  font-family: "Quicksand", sans-serif;
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  transition: 0.5s;
+}
+
+#sideMenuBar label:hover {
+  font-size: 26px;
+  transition: 0.5s;
+}
+
+#sideMenuBar hr {
+  color: #fff;
+  border-top: 3px solid rgb(255, 255, 255);
+  width: 90%;
+  border-radius: 5px;
+}
+
+#sideMenuBar ul {
+  color: #fff;
+  font-size: 15px;
+  font-family: "Quicksand", sans-serif;
+  margin-top: 10px;
+  margin-left: 3%;
+  margin-right: 3%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 8px;
+  transition: 0.3s
+}
+
+#sideMenuBar ul i {
+  margin-right: 10px;
+  align-content: center;
+}
+
+#sideMenuBar ul:hover {
+  /* background-color: #333; */
+  font-size: 16px;
+  background-color: rgb(65, 65, 65);
+  transition: 0.3s;
+}

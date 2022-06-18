@@ -22,23 +22,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .authorizeRequests().antMatchers(HttpMethod.GET, "/" ).permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/signin")
-                .permitAll()
-                .and()
-                .logout().logoutUrl("/logout");
+        .authorizeRequests().antMatchers(HttpMethod.GET, "/" ).permitAll()
+        .anyRequest().authenticated()
+        .and()
+        .formLogin()
+        .loginPage("/signin")
+        .permitAll()
+        .defaultSuccessUrl("/home")
+        .failureUrl("/signin")
+        .and()
+        .logout()
+        .permitAll();
 
         httpSecurity.csrf().disable();
         httpSecurity.headers().frameOptions().disable();
     }
 
     @Override
-	public void configure(WebSecurity web) throws Exception{
-		web.ignoring().antMatchers("/js/**", "/css/**");
-	}
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/js/**", "/css/**");
+    }
 
     @Override
     @Bean

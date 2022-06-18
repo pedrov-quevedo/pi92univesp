@@ -25,16 +25,14 @@ public class ExpenditureController implements WebMvcConfigurer{
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/home").setViewName("home");
+		registry.addViewController("/signin").setViewName("signin");
+		registry.addViewController("/signup").setViewName("signup");
+		registry.addViewController("/index").setViewName("index");
 	}
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String index(){
 		return "index";
-	}
-
-	@RequestMapping(value="/signin", method=RequestMethod.GET)
-	public String signin() {
-		return "signin";
 	}
 
 	@RequestMapping(value="/home", method=RequestMethod.GET)
@@ -60,10 +58,5 @@ public class ExpenditureController implements WebMvcConfigurer{
 			return "signup";
 		}
 		return "redirect:/index";
-	}
-
-	@PostMapping(value="/signin")
-	public String signinUser() {
-		return "redirect:/signin";
 	}
 }
