@@ -7,8 +7,6 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Seu Controle! - Home</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -24,13 +22,21 @@
     <link th:href="@{/css/style.css}" rel="stylesheet"/>
     <script href="../static/js/script.js" th:src="@{/js/script.js}"></script>
 </head>
-<body onload="ajustingHomeLayout()">
-    <div id="sideMenuBar">
-        <label>Bem vindo(a)!</label>
+<body onload="ajustingHomeLayout(),  startTime()">
+    <form id="sideMenuBar" method="get" action="/home/movements">
+        <label th:text=${loggedUser}></label>
         <hr class="rounded">
-        <ul><i class="fa-solid fa-house fa-lg"></i>Página Inicial</ul>
+        <ul th:action="@{/home/movements}"><i class="fa-solid fa-house fa-lg"></i>Página Inicial</ul>
         <ul><i class="fa-solid fa-person-chalkboard fa-lg"></i>Perfil</ul>
         <ul><i class="fa-solid fa-money-bill-transfer fa-lg"></i>Movimentações</ul>
-    </div>
+
+        <ol id="dataHoraAtual"></ol>
+    </form>
+
+    <form id="movements">
+        <div>
+            
+        </div>
+    </form>
 </body>
 </html>

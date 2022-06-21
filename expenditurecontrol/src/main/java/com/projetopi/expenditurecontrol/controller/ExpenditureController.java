@@ -1,8 +1,12 @@
 package com.projetopi.expenditurecontrol.controller;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.TransactionSystemException;
 import org.springframework.ui.Model;
@@ -36,7 +40,10 @@ public class ExpenditureController implements WebMvcConfigurer{
 	}
 
 	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public String home() {
+	public String login_success(Model model, Principal principal) {
+		String loggedUser = principal.getName();
+
+		model.addAttribute("loggedUser", "Bem vindo(a), " + loggedUser);
 		return "home";
 	}
 

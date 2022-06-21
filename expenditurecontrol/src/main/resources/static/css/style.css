@@ -232,6 +232,7 @@ body {
   margin: 8px;
   box-shadow: 1px 1px 1px 1px rgb(51, 51, 51);
   transition: 0.7s;
+  position: relative;
 }
 
 #sideMenuBar:hover{
@@ -284,4 +285,21 @@ body {
   font-size: 16px;
   background-color: rgb(65, 65, 65);
   transition: 0.3s;
+}
+
+#dataHoraAtual {
+  color: #fff;
+  font-size: 14px;
+  font-family: "Quicksand", sans-serif;
+  margin-top: 20px;
+  text-align: center;
+  transition: 0.5s;
+  bottom: 0;
+  margin-left: 5px;
+  position: absolute;
+}
+
+#dataHoraAtual:hover {
+  font-size: 16px;
+  transition: 0.5s;
 }
