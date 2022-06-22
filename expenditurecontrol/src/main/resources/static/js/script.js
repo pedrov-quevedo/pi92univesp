@@ -43,3 +43,52 @@ function startTime() {
     }
     return diaMes;
   }
+
+ function openViews(view) {
+    var v = document.getElementById(view)
+
+    if (view == 'home') {
+        document.getElementById('movements').style.visibility = 'hidden'
+        document.getElementById('profile').style.visibility = 'hidden'
+        document.getElementById('movements').style.width = '0px'
+        document.getElementById('profile').style.width = '0px'
+    }
+    else {
+        if (v.style.visibility == 'visible') {     
+            var x = document.querySelectorAll('#' + view);
+            x[0].style.setProperty('visibility', 'hidden', 'important');
+            // v.style.visibility = 'hidden'
+            v.style.width = '0%'
+
+            if(view == 'profile'){
+                document.getElementById('movements').style.visibility = 'hidden'
+                document.getElementById('movements').style.width = '0px'
+            }
+            else if (view == 'movements'){
+                document.getElementById('profile').style.visibility = 'hidden'
+                document.getElementById('profile').style.width = '0px'
+            }
+        }
+        else {
+            var x = document.querySelectorAll('#' + view);
+            x[0].style.setProperty('visibility', 'visible', 'important');
+            // v.style.visibility = 'visible'
+            v.style.width = '90%'
+           
+            if(view == 'profile'){
+                document.getElementById('movements').style.visibility = 'hidden'
+                document.getElementById('movements').style.width = '0px'
+            }
+            else if (view == 'movements'){
+                document.getElementById('profile').style.visibility = 'hidden'
+                document.getElementById('profile').style.width = '0px'
+            }
+        }
+    }
+ }
+
+ function today() {
+    var myDate = document.getElementById('edtData');
+    var today = new Date();
+    myDate.value = today.toISOString().substr(0, 10);
+  }

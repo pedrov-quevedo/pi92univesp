@@ -262,7 +262,7 @@ body {
   border-radius: 5px;
 }
 
-#sideMenuBar ul {
+#menuHome {
   color: #fff;
   font-size: 15px;
   font-family: "Quicksand", sans-serif;
@@ -275,16 +275,54 @@ body {
   transition: 0.3s
 }
 
-#sideMenuBar ul i {
-  margin-right: 10px;
-  align-content: center;
-}
-
-#sideMenuBar ul:hover {
-  /* background-color: #333; */
+#menuHome:hover {
   font-size: 16px;
   background-color: rgb(65, 65, 65);
   transition: 0.3s;
+}
+
+#menuProfile {
+  color: #fff;
+  font-size: 15px;
+  font-family: "Quicksand", sans-serif;
+  margin-top: 10px;
+  margin-left: 3%;
+  margin-right: 3%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 8px;
+  transition: 0.3s
+}
+
+#menuProfile:hover {
+  font-size: 16px;
+  background-color: rgb(65, 65, 65);
+  transition: 0.3s;
+}
+
+#menuMovements {
+  color: #fff;
+  font-size: 15px;
+  font-family: "Quicksand", sans-serif;
+  margin-top: 10px;
+  margin-left: 3%;
+  margin-right: 3%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 8px;
+  transition: 0.3s
+}
+
+#menuMovements:hover {
+  font-size: 16px;
+  background-color: rgb(65, 65, 65);
+  transition: 0.3s;
+}
+
+#sideMenuBar p i {
+  margin-right: 10px;
+  margin-left: 25px;
+  align-content: center;
 }
 
 #dataHoraAtual {
@@ -292,14 +330,74 @@ body {
   font-size: 14px;
   font-family: "Quicksand", sans-serif;
   margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 50px;
   text-align: center;
-  transition: 0.5s;
+  transition: 0.2s;
   bottom: 0;
-  margin-left: 5px;
+  /* margin-right: 20px; */
   position: absolute;
 }
 
 #dataHoraAtual:hover {
   font-size: 16px;
-  transition: 0.5s;
+  margin-left: 45px;
+  transition: 0.2s;
+}
+
+#profile {
+  visibility: hidden !important;
+  background-color: green;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* margin-right: 10px; */
+  /* width: 100%; */
+  height: 100%;
+  animation: 2s fadeIn;
+  animation-fill-mode: forwards;
+}
+
+#movements {
+  visibility: hidden !important;
+  background-color: rgb(114, 114, 114);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* margin-right: 10px; */
+  /* width: 100%; */
+  height: 100%;
+  animation: 2s fadeIn;
+  animation-fill-mode: forwards;
+}
+
+#movements #edtDescricao {
+  font-size: 16px;
+  font-family: "Quicksand", sans-serif;
+  width: 35%;
+}
+
+#movements #edtValor {
+  font-size: 16px;
+  font-family: "Quicksand", sans-serif;
+  width: 35%;
+}
+
+#movements #cboTipo {
+  font-size: 16px;
+  font-family: "Quicksand", sans-serif;
+  width: 35%;
+}
+
+#movements #edtData {
+  font-size: 16px;
+  font-family: "Quicksand", sans-serif;
+  width: 35%;
+}
+
+@keyframes fadeIn {
+  25% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
 }

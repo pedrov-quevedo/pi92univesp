@@ -1,42 +1,146 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-striot-thymeleaf-4.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Seu Controle! - Home</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/kitcode.js" crossorigin="anonymous"> </script>
-    <script src="https://kit.fontawesome.com/3d44e022ce.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"
+      integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/kitcode.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/3d44e022ce.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Quicksand"
+    />
 
     <!-- scripts e css da página -->
-    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
     <script href="../static/js/script.js" th:src="@{/js/script.js}"></script>
-</head>
-<body onload="ajustingHomeLayout(),  startTime()">
+  </head>
+  <body onload="ajustingHomeLayout(),  startTime(), today()">
     <form id="sideMenuBar" method="get" action="/home/movements">
-        <label th:text=${loggedUser}></label>
-        <hr class="rounded">
-        <ul th:action="@{/home/movements}"><i class="fa-solid fa-house fa-lg"></i>Página Inicial</ul>
-        <ul><i class="fa-solid fa-person-chalkboard fa-lg"></i>Perfil</ul>
-        <ul><i class="fa-solid fa-money-bill-transfer fa-lg"></i>Movimentações</ul>
+      <label th:text="${loggedUser}"></label>
+      <hr class="rounded" />
+      <p id="menuHome" onclick="openViews('home')">
+        <i class="fa-solid fa-house fa-lg"></i>Página Inicial
+      </p>
+      <p id="menuProfile" onclick="openViews('profile')">
+        <i class="fa-solid fa-person-chalkboard fa-lg"></i>Perfil
+      </p>
+      <p id="menuMovements" onclick="openViews('movements')">
+        <i class="fa-solid fa-money-bill-transfer fa-lg"></i>Movimentações
+      </p>
 
-        <ol id="dataHoraAtual"></ol>
+      <span id="dataHoraAtual"></span>
     </form>
 
-    <form id="movements">
-        <div>
-            
-        </div>
-    </form>
-</body>
+    <div id="profile"></div>
+
+    <div id="movements">
+      <!-- DESCRIÇÃO -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="descricao">Descrição</label>
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          placeholder="Digite uma descrição"
+          name="descricao"
+          id="edtDescricao"
+        />
+      </div>
+
+      <!-- VALOR -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="valor">Valor</label>
+        <input
+          type="number"
+          class="form-control form-control-lg"
+          placeholder="Digite o valor"
+          name="valor"
+          id="edtValor"
+          min="0.00"
+          max="10000.00"
+          step="0.01"
+        />
+      </div>
+
+       <!-- DATA -->
+       <div class="form-outline mb-4">
+        <label class="form-label" for="data">Data</label>
+        <input
+          type="date"
+          class="form-control form-control-lg"
+          placeholder="Selecione a data"
+          name="data"
+          id="edtData"
+        />
+      </div>
+
+      <!-- TIPO -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="tipo">Tipo</label>
+        <select
+          class="form-control form-control-lg"
+          placeholder="Selecione o tipo"
+          name="tipo"
+          id="cboTipo"
+        >
+          <option value="Entrada">Entrada</option>
+          <option value="Saída">Saída</option>
+        </select>
+      </div>
+
+      <div class="text-center text-lg-start mt-4 pt-2">
+        <button
+          class="btn btn-primary btn-lg"
+          style="
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+            border-color: #fff;
+          "
+          id="btnSalvarMovimentacao"
+          type="submit"
+        >
+          Salvar movimentação
+        </button>
+      </div>
+    </div>
+  </body>
 </html>
