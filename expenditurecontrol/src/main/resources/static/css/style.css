@@ -195,12 +195,12 @@ body {
   transition: 1.5s;
 }
 
-#edtLogin, 
+#edtLogin,
 #edtSenha {
   border-color: rgba(255, 255, 255, 0.52);
 }
 
-#edtLogin:invalid, 
+#edtLogin:invalid,
 #edtSenha:invalid {
   border-color: rgba(255, 0, 0, 0.52);
   -webkit-transition: background-color 1000ms linear;
@@ -208,7 +208,7 @@ body {
   transition: background-color 1000ms linear;
 }
 
-#edtLogin:valid:focus, 
+#edtLogin:valid:focus,
 #edtSenha:valid:focus {
   border-color: rgba(34, 255, 0, 0.52);
   -webkit-transition: background-color 1000ms linear;
@@ -235,7 +235,7 @@ body {
   position: relative;
 }
 
-#sideMenuBar:hover{
+#sideMenuBar:hover {
   box-shadow: 1px 1px 1px 1px rgb(60, 60, 60);
   transition: 0.7s;
 }
@@ -272,7 +272,7 @@ body {
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 8px;
-  transition: 0.3s
+  transition: 0.3s;
 }
 
 #menuHome:hover {
@@ -291,7 +291,7 @@ body {
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 8px;
-  transition: 0.3s
+  transition: 0.3s;
 }
 
 #menuProfile:hover {
@@ -310,7 +310,7 @@ body {
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 8px;
-  transition: 0.3s
+  transition: 0.3s;
 }
 
 #menuMovements:hover {
@@ -331,7 +331,7 @@ body {
   font-family: "Quicksand", sans-serif;
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 50px;
+  margin-left: 45px;
   text-align: center;
   transition: 0.2s;
   bottom: 0;
@@ -341,7 +341,7 @@ body {
 
 #dataHoraAtual:hover {
   font-size: 16px;
-  margin-left: 45px;
+  margin-left: 37px;
   transition: 0.2s;
 }
 
@@ -359,38 +359,51 @@ body {
 
 #movements {
   visibility: hidden !important;
-  background-color: rgb(114, 114, 114);
+  /* background-color: rgb(114, 114, 114); */
   margin-top: 10px;
-  margin-bottom: 10px;
-  /* margin-right: 10px; */
-  /* width: 100%; */
+  margin-bottom: 20px;
+  margin-right: 10px;
+  width: 90%;
   height: 100%;
   animation: 2s fadeIn;
   animation-fill-mode: forwards;
 }
 
-#movements #edtDescricao {
+#edtDescricao {
   font-size: 16px;
   font-family: "Quicksand", sans-serif;
-  width: 35%;
+  /* width: 35%; */
 }
 
-#movements #edtValor {
+#edtValor {
   font-size: 16px;
   font-family: "Quicksand", sans-serif;
-  width: 35%;
+  /* width: 35%; */
 }
 
-#movements #cboTipo {
+#cboTipo {
   font-size: 16px;
   font-family: "Quicksand", sans-serif;
-  width: 35%;
+  /* width: 35%; */
 }
 
-#movements #edtData {
+#edtData {
   font-size: 16px;
   font-family: "Quicksand", sans-serif;
-  width: 35%;
+  /* width: 35%; */
+}
+
+#movements h2 {
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+  font-size: 28px;
+}
+
+#movements h2:hover {
+  font-size: 30px;
+  transition: 0.3s;
 }
 
 @keyframes fadeIn {
@@ -400,4 +413,121 @@ body {
   100% {
     visibility: visible;
   }
+}
+
+#cadMovements {
+  visibility: hidden !important;
+  display: none;
+  padding: 8px;
+  width: 60%;
+  height: 45%;
+  background-color: rgb(255, 255, 255);
+  margin: 0 auto;
+  border-color: transparent;
+  margin-top: 5%;
+  border-radius: 2%;
+  transition: 0.3s;
+}
+
+#cadMovements label {
+  color: #222;
+}
+
+#cadMovements:hover {
+  width: 62%;
+  height: 47%;
+  transition: 0.3s;
+}
+
+#newMovements {
+  width: 45px;
+  height: 45px;
+  border: 0;
+  background-color: white;
+  border-radius: 100%;
+  margin-right: 50px;
+  right: 0;
+  bottom: 40px;
+  position: absolute;
+  transition: 0.2s;
+  border-color: transparent;
+  outline: 0;
+}
+
+#newMovements:hover {
+  margin-right: 45px;
+  width: 50px;
+  height: 50px;
+  bottom: 35px;
+  right: 5px;
+  transition: 0.2s;
+}
+
+#btnSalvarMovimentacao {
+  background-color: #333;
+  color: #fff;
+}
+
+#btnSalvarMovimentacao:hover {
+  background-color: rgb(15, 177, 34);
+  /* color: #333; */
+  transition: 0.7s;
+}
+
+#listMovements {
+  background-color: transparent;
+  outline: 0;
+  border-color: #333;
+  margin-top: 2%;
+}
+
+#listMovements table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: transparent;
+}
+
+#listMovements th {
+  /* padding-top: 12px;
+  padding-bottom: 12px; */
+  font-size: 18px;
+  text-align: center;
+  background-color: rgb(70, 70, 70);
+  color: white;
+  border: 2px solid #333;
+  border-radius: 8px;
+  transition: 0.5s;
+}
+
+#listMovements th:hover {
+  /* background-color: #ddd; */
+  font-size: 20px;
+  transition: 0.5s;
+}
+
+#listMovements tr {
+  font-size: 16px;
+  text-align: center;
+  transition: 0.5s;
+}
+
+#listMovements tr:hover {
+  /* background-color: #ddd; */
+  font-size: 17px;
+  transition: 0.5s;
+}
+
+#listMovements table,
+thead,
+tbody,
+tr {
+  background-color: transparent;
+  outline: 0;
+  border-color: #333;
+  font-family: "Quicksand", sans-serif;
+}
+
+#lisMovements table th,
+td {
+  color: #fff;
 }

@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.projetopi.expenditurecontrol.models.Movement;
 import com.projetopi.expenditurecontrol.models.Usuario;
+import com.projetopi.expenditurecontrol.repository.MovementRepository;
 import com.projetopi.expenditurecontrol.repository.UsuarioRepository;
 
 @Controller
@@ -25,6 +28,9 @@ public class ExpenditureController implements WebMvcConfigurer{
 
 	@Autowired
 	private UsuarioRepository ur;
+
+	@Autowired
+	private MovementRepository mr;
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
@@ -44,6 +50,7 @@ public class ExpenditureController implements WebMvcConfigurer{
 		String loggedUser = principal.getName();
 
 		model.addAttribute("loggedUser", "Bem vindo(a), " + loggedUser);
+		model.addAttribute("movements", mr.findAll());
 		return "home";
 	}
 
@@ -66,4 +73,21 @@ public class ExpenditureController implements WebMvcConfigurer{
 		}
 		return "redirect:/index";
 	}
+
+	@PostMapping(value = "/home/cadMovement")
+	public String formCadCurriculo(Movement movement, Principal principal, Model model) {
+		String usuario = principal.getName();
+		movement.setUsuario(usuario);
+		mr.save(movement);
+		model.addAttribute("loggedUser", "Bem vindo(a), " + usuario);
+		return "redirect:/home";
+	}
+
+	// @RequestMapping("/home/movements")
+	// public String listaMovements(){
+	// 	ModelAndView mv = new ModelAndView("home");
+	// 	Iterable<Movement> movement = mr.findAll();
+	// 	mv.addObject("movement", movement);
+	// 	return "home";
+	// }
 }

@@ -55,8 +55,8 @@
     <script href="../static/js/script.js" th:src="@{/js/script.js}"></script>
   </head>
   <body onload="ajustingHomeLayout(),  startTime(), today()">
-    <form id="sideMenuBar" method="get" action="/home/movements">
-      <label th:text="${loggedUser}"></label>
+    <form id="sideMenuBar" method="get">
+      <label id="usuario" th:text="${loggedUser}"></label>
       <hr class="rounded" />
       <p id="menuHome" onclick="openViews('home')">
         <i class="fa-solid fa-house fa-lg"></i>Página Inicial
@@ -73,74 +73,104 @@
 
     <div id="profile"></div>
 
-    <div id="movements">
-      <!-- DESCRIÇÃO -->
-      <div class="form-outline mb-4">
-        <label class="form-label" for="descricao">Descrição</label>
-        <input
-          type="text"
-          class="form-control form-control-lg"
-          placeholder="Digite uma descrição"
-          name="descricao"
-          id="edtDescricao"
-        />
-      </div>
+    <div class="container" id="movements">
+      <h2>Movimentações</h2>
+      <div class="card" id="cadMovements">
+        <form method="post" th:action="@{/home/cadMovement}">
+          <div class="form-row">
+            <!-- DESCRIÇÃO -->
+            <div class="form-group col-md-8">
+              <label class="form-label" for="descricao">Descrição</label>
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Digite uma descrição"
+                name="descricao"
+                id="edtDescricao"
+              />
+            </div>
 
-      <!-- VALOR -->
-      <div class="form-outline mb-4">
-        <label class="form-label" for="valor">Valor</label>
-        <input
-          type="number"
-          class="form-control form-control-lg"
-          placeholder="Digite o valor"
-          name="valor"
-          id="edtValor"
-          min="0.00"
-          max="10000.00"
-          step="0.01"
-        />
-      </div>
+            <!-- VALOR -->
+            <div class="form-group col-md-4">
+              <label class="form-label" for="valor">Valor</label>
+              <input
+                type="number"
+                class="form-control form-control-lg"
+                placeholder="Digite o valor"
+                name="valor"
+                id="edtValor"
+                min="0.00"
+                max="10000.00"
+                step="0.01"
+              />
+            </div>
+          </div>
 
-       <!-- DATA -->
-       <div class="form-outline mb-4">
-        <label class="form-label" for="data">Data</label>
-        <input
-          type="date"
-          class="form-control form-control-lg"
-          placeholder="Selecione a data"
-          name="data"
-          id="edtData"
-        />
-      </div>
+          <!-- DATA -->
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label class="form-label" for="data">Data</label>
+              <input
+                type="date"
+                class="form-control form-control-lg"
+                placeholder="Selecione a data"
+                name="data"
+                id="edtData"
+              />
+            </div>
 
-      <!-- TIPO -->
-      <div class="form-outline mb-4">
-        <label class="form-label" for="tipo">Tipo</label>
-        <select
-          class="form-control form-control-lg"
-          placeholder="Selecione o tipo"
-          name="tipo"
-          id="cboTipo"
-        >
-          <option value="Entrada">Entrada</option>
-          <option value="Saída">Saída</option>
-        </select>
-      </div>
+            <!-- TIPO -->
+            <div class="form-group col-md-4">
+              <label class="form-label" for="tipo">Tipo</label>
+              <select
+                class="form-control form-control-lg"
+                placeholder="Selecione o tipo"
+                name="tipo"
+                id="cboTipo"
+              >
+                <option value="Entrada">Entrada</option>
+                <option value="Saída">Saída</option>
+              </select>
+            </div>
+          </div>
 
-      <div class="text-center text-lg-start mt-4 pt-2">
-        <button
-          class="btn btn-primary btn-lg"
-          style="
-            padding-left: 2.5rem;
-            padding-right: 2.5rem;
-            border-color: #fff;
-          "
-          id="btnSalvarMovimentacao"
-          type="submit"
-        >
-          Salvar movimentação
-        </button>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button
+              class="btn btn-primary btn-lg"
+              id="btnSalvarMovimentacao"
+              type="submit"
+            >
+              Salvar movimentação
+            </button>
+          </div>
+        </form>
       </div>
+      <div class="card" id="listMovements">
+        <table>
+          <thead>
+              <tr>
+                  <th> Descrição </th>
+                  <th> Valor </th>
+                  <th> Data </th>
+                  <th> Tipo </th>
+              </tr>
+          </thead>
+          <tbody>
+        <tr th:if="${movements.empty}">
+                  <td colspan="2"> Sem movimentações por aqui </td>
+              </tr>
+              <tr th:each="movement : ${movements}">
+                  <td><span th:text="${movement.descricao}"> Descrição </span></td>
+                  <td><span th:text="${'R$ ' + movement.valor}"> Valor </span></td>
+                  <td><span th:text="${movement.data}"> Data </span></td>
+                  <td><span th:text="${movement.tipo}"> Tipo </span></td>
+              </tr>
+          </tbody>
+      </table>
+      </div>
+      <button id="newMovements" onclick="showHideCadMovements()">
+        <i class="fa-solid fa-plus fa-lg"></i>
+      </button>
     </div>
   </body>
 </html>
