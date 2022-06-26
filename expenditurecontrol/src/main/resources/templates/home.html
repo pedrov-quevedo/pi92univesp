@@ -34,10 +34,6 @@
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://kit.fontawesome.com/kitcode.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
       src="https://kit.fontawesome.com/3d44e022ce.js"
       crossorigin="anonymous"
     ></script>
@@ -54,11 +50,11 @@
     <link th:href="@{/css/style.css}" rel="stylesheet" />
     <script href="../static/js/script.js" th:src="@{/js/script.js}"></script>
   </head>
-  <body onload="ajustingHomeLayout(),  startTime(), today()">
+  <body onload="ajustingHomeLayout(), today()">
     <form id="sideMenuBar" method="get">
       <label id="usuario" th:text="${loggedUser}"></label>
       <hr class="rounded" />
-      <p id="menuHome" onclick="openViews('home')">
+      <p id="menuHome" onclick="openViews('initial')">
         <i class="fa-solid fa-house fa-lg"></i>Página Inicial
       </p>
       <p id="menuProfile" onclick="openViews('profile')">
@@ -67,14 +63,41 @@
       <p id="menuMovements" onclick="openViews('movements')">
         <i class="fa-solid fa-money-bill-transfer fa-lg"></i>Movimentações
       </p>
-
-      <span id="dataHoraAtual"></span>
+      <a id="menuLogout" th:href="@{/logout}">
+        <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>Sair
+      </a>
     </form>
 
-    <div id="profile"></div>
+    <div class="container" id="initial"></div>
+
+    <div class="container" id="profile"></div>
 
     <div class="container" id="movements">
       <h2>Movimentações</h2>
+      <div class="card" id="listMovements">
+        <table>
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Valor</th>
+              <th>Data</th>
+              <th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:if="${movements.empty}">
+              <td colspan="3">Sem movimentações por aqui! &#128564</td>
+            </tr>
+            <tr th:each="movement : ${movements}">
+              <td><span th:text="${movement.descricao}"> Descrição </span></td>
+              <td><span th:text="${'R$ ' + movement.valor}"> Valor </span></td>
+              <td><span th:text="${movement.data}"> Data </span></td>
+              <td><span th:text="${movement.tipo}" th:style="${movement.tipo} == Entrada ? 'color: green' : 'color: red'"> Tipo </span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <div class="card" id="cadMovements">
         <form method="post" th:action="@{/home/cadMovement}">
           <div class="form-row">
@@ -144,29 +167,6 @@
             </button>
           </div>
         </form>
-      </div>
-      <div class="card" id="listMovements">
-        <table>
-          <thead>
-              <tr>
-                  <th> Descrição </th>
-                  <th> Valor </th>
-                  <th> Data </th>
-                  <th> Tipo </th>
-              </tr>
-          </thead>
-          <tbody>
-        <tr th:if="${movements.empty}">
-                  <td colspan="2"> Sem movimentações por aqui </td>
-              </tr>
-              <tr th:each="movement : ${movements}">
-                  <td><span th:text="${movement.descricao}"> Descrição </span></td>
-                  <td><span th:text="${'R$ ' + movement.valor}"> Valor </span></td>
-                  <td><span th:text="${movement.data}"> Data </span></td>
-                  <td><span th:text="${movement.tipo}"> Tipo </span></td>
-              </tr>
-          </tbody>
-      </table>
       </div>
       <button id="newMovements" onclick="showHideCadMovements()">
         <i class="fa-solid fa-plus fa-lg"></i>

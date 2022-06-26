@@ -9,79 +9,46 @@ function ajustingHomeLayout() {
   }
 }
 
-function startTime() {
-  const today = new Date();
-  let hora = today.getHours();
-  let minuto = today.getMinutes();
-  let segundo = today.getSeconds();
-  let dia = today.getDay();
-  let mes = today.getMonth();
-  let ano = today.getFullYear();
-
-  minuto = checkTime(minuto);
-  segundo = checkTime(segundo);
-
-  dia = checkDate(dia);
-  mes = checkDate(mes);
-
-  document.getElementById("dataHoraAtual").innerHTML =
-    dia + "/" + mes + "/" + ano + " - " + hora + ":" + minuto + ":" + segundo;
-  setTimeout(startTime, 1000);
-}
-
-function checkTime(i) {
-  if (i < 10) {
-    i = "0" + i;
-  }
-  return i;
-}
-
-function checkDate(diaMes) {
-  if (diaMes < 10) {
-    diaMes = "0" + diaMes;
-  }
-  return diaMes;
-}
-
 function openViews(view) {
-  var v = document.getElementById(view);
+  var show = document.querySelectorAll("#" + view);
 
-  if (view == "home") {
-    document.getElementById("movements").style.visibility = "hidden";
-    document.getElementById("profile").style.visibility = "hidden";
-    document.getElementById("movements").style.width = "0px";
-    document.getElementById("profile").style.width = "0px";
-  } else {
-    if (v.style.visibility == "visible") {
-      var x = document.querySelectorAll("#" + view);
-      x[0].style.setProperty("visibility", "hidden", "important");
+  if (view == "initial") {
+    var hide1 = document.querySelectorAll("#" + "profile");
+    var hide2 = document.querySelectorAll("#" + "movements");
 
-      var x = document.querySelectorAll("#" + 'cadMovements');
-      x[0].style.setProperty("visibility", "hidden", "important");
-      // v.style.visibility = 'hidden'
-      v.style.width = "0%";
+    show[0].style.setProperty("display", "block", "important");
+    hide1[0].style.setProperty("display", "none", "important");
+    hide2[0].style.setProperty("display", "none", "important");
+  }
 
-      if (view == "profile") {
-        document.getElementById("movements").style.visibility = "hidden";
-        document.getElementById("movements").style.width = "0px";
-      } else if (view == "movements") {
-        document.getElementById("profile").style.visibility = "hidden";
-        document.getElementById("profile").style.width = "0px";
-      }
+  if (view == "profile") {
+    var hide1 = document.querySelectorAll("#" + "initial");
+    var hide2 = document.querySelectorAll("#" + "movements");
+
+    if (document.getElementById("profile").style.display == "none") {
+      hide1[0].style.setProperty("display", "none", "important");
+      show[0].style.setProperty("display", "block", "important");
     } else {
-      var x = document.querySelectorAll("#" + view);
-      x[0].style.setProperty("visibility", "visible", "important");
-      // v.style.visibility = 'visible'
-      v.style.width = "90%";
-
-      if (view == "profile") {
-        document.getElementById("movements").style.visibility = "hidden";
-        document.getElementById("movements").style.width = "0px";
-      } else if (view == "movements") {
-        document.getElementById("profile").style.visibility = "hidden";
-        document.getElementById("profile").style.width = "0px";
-      }
+      show[0].style.setProperty("display", "none", "important");
+      hide1[0].style.setProperty("display", "block", "important");
     }
+
+    hide2[0].style.setProperty("display", "none", "important");
+  }
+
+  if (view == "movements") {
+    var hide1 = document.querySelectorAll("#" + "initial");
+    var hide2 = document.querySelectorAll("#" + "profile");
+
+    if (document.getElementById("movements").style.display == "none") {
+      hide1[0].style.setProperty("display", "none", "important");
+      show[0].style.setProperty("display", "block", "important");
+    } else {
+      show[0].style.setProperty("display", "none", "important");
+      hide1[0].style.setProperty("display", "block", "important");
+    }
+
+    hide2[0].style.setProperty("display", "none", "important");
   }
 }
 
@@ -94,7 +61,7 @@ function showHideCadMovements() {
 
     document
       .getElementById("movements")
-      .getElementsByTagName("button")[1].style.animationDelay = "0.7s"
+      .getElementsByTagName("button")[1].style.animationDelay = "0.7s";
     document
       .getElementById("movements")
       .getElementsByTagName("button")[1].style.transform = "rotate(90deg)";
@@ -104,7 +71,7 @@ function showHideCadMovements() {
 
     document
       .getElementById("movements")
-      .getElementsByTagName("button")[1].style.animationDelay = "0.7s"
+      .getElementsByTagName("button")[1].style.animationDelay = "0.7s";
     document
       .getElementById("movements")
       .getElementsByTagName("button")[1].style.transform = "rotate(-45deg)";

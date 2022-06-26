@@ -1,12 +1,8 @@
 package com.projetopi.expenditurecontrol.controller;
 
 import java.security.Principal;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.TransactionSystemException;
 import org.springframework.ui.Model;
@@ -14,10 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
 import com.projetopi.expenditurecontrol.models.Movement;
 import com.projetopi.expenditurecontrol.models.Usuario;
 import com.projetopi.expenditurecontrol.repository.MovementRepository;
@@ -49,8 +43,9 @@ public class ExpenditureController implements WebMvcConfigurer{
 	public String login_success(Model model, Principal principal) {
 		String loggedUser = principal.getName();
 
+		Iterable<Movement> all = mr.findAllByUsuario(loggedUser);
 		model.addAttribute("loggedUser", "Bem vindo(a), " + loggedUser);
-		model.addAttribute("movements", mr.findAll());
+		model.addAttribute("movements", all);
 		return "home";
 	}
 
@@ -83,11 +78,8 @@ public class ExpenditureController implements WebMvcConfigurer{
 		return "redirect:/home";
 	}
 
-	// @RequestMapping("/home/movements")
-	// public String listaMovements(){
-	// 	ModelAndView mv = new ModelAndView("home");
-	// 	Iterable<Movement> movement = mr.findAll();
-	// 	mv.addObject("movement", movement);
-	// 	return "home";
-	// }
+	@RequestMapping("/logout")
+	public String logout(){
+		return "redirect:/logout";
+	}
 }
